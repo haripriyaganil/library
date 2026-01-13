@@ -1,0 +1,72 @@
+.library-page {
+  background: linear-gradient(to bottom, #f3e6d5, #dcc2a3);
+  padding: 60px 30px;
+  min-height: 100vh;
+}
+
+.library-title {
+  text-align: center;
+  font-size: 34px;
+  color: #5a3b1e;
+  margin-bottom: 50px;
+  font-family: Georgia, serif;
+}
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.book-card {
+  background: #fffaf2;
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 10px 22px rgba(90,59,30,0.35);
+  transition: 0.35s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 40px rgba(90,59,30,0.55);
+}
+
+.book-card img {
+  width: 120px;
+  height: 170px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border-radius: 6px;
+}
+
+.book-card h3 {
+  color: #5a3b1e;
+  font-family: Georgia, serif;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.book-card p {
+  color: #8b5e34;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.book-card button {
+  background: linear-gradient(135deg, #8b5e34, #5a3b1e);
+  color: #fffaf2;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-card button:hover {
+  background: linear-gradient(135deg, #a86f3e, #8b5e34);
+  transform: translateY(-2px);
+}

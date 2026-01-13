@@ -1,0 +1,60 @@
+.info-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 70px 24px 90px;
+  background: #ffffff;
+}
+
+/* INFO CARD */
+.info-card {
+  background: #f8fbff;
+  padding: 36px 28px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* TITLE + ICON */
+.info-card h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ICON STYLE */
+.info-icon {
+  font-size: 18px;
+  color: #3b82f6;
+}
+
+/* DESCRIPTION */
+.info-card p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 4px 0;
+}
+
+/* RESPONSIVE POLISH */
+@media (max-width: 768px) {
+  .info-section {
+    padding: 50px 20px 70px;
+  }
+
+  .info-card {
+    padding: 30px 22px;
+  }
+}

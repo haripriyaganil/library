@@ -1,0 +1,125 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* NAVBAR CONTAINER */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 28px;
+
+  background: linear-gradient(90deg, #3b2414, #5c3a22, #8b5e34);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+}
+
+/* LEFT LOGO */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-img {
+  height: 68px;
+  margin-right: 14px;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.6));
+  transition: 0.3s ease;
+}
+
+.navbar-logo-img:hover {
+  transform: scale(1.08);
+}
+
+
+.navbar-logo-text {
+  font-weight: 700;
+  font-size: 19px;
+  color: #f1e3cf;
+  letter-spacing: 1px;
+  font-family: "Georgia", serif;
+}
+
+/* CENTER LINKS */
+.navbar-center {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar-center li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #f1e3cf;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.navbar-center li a:hover {
+  background: rgba(230,200,155,0.18);
+  color: #e6c89b;
+  box-shadow: 0 0 8px rgba(230,200,155,0.4);
+}
+
+/* RIGHT BUTTONS */
+.navbar-right {
+  display: flex;
+  gap: 12px;
+}
+
+/* BUTTONS */
+.nav-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+/* OUTLINE */
+.nav-btn.outline {
+  border: 1px solid #e6c89b;
+  color: #e6c89b;
+  background: transparent;
+}
+
+.nav-btn.outline:hover {
+  background: rgba(230,200,155,0.2);
+  box-shadow: 0 0 10px rgba(230,200,155,0.5);
+}
+
+/* FILLED */
+.nav-btn.filled {
+  background: linear-gradient(135deg, #a86f3e, #8b5e34);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.nav-btn.filled:hover {
+  background: linear-gradient(135deg, #c98954, #a86f3e);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.55);
+  transform: translateY(-1px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .navbar-left,
+  .navbar-center,
+  .navbar-right {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,51 @@
+.splash-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #45b7c6; /* original background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* needed for overlay positioning */
+}
+
+.splash-content {
+  text-align: center;
+  color: white;
+  z-index: 2; /* above the overlay */
+  position: relative;
+}
+
+.book-icon {
+  font-size: 80px;
+  margin-bottom: 12px;
+}
+
+.splash-content h1 {
+  font-size: 48px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.splash-content p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* Dark blue transparent blur overlay */
+.dark-blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 139, 0.5); /* dark blue with transparency */
+  backdrop-filter: blur(6px);
+  z-index: 1; /* behind content */
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.dark-blur-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}

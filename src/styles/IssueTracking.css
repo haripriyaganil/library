@@ -1,0 +1,43 @@
+.issue-page {
+  padding: 40px;
+}
+
+.issue-page h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.issue-page p {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.issued {
+  color: blue;
+  font-weight: bold;
+}
+
+.overdue {
+  color: red;
+  font-weight: bold;
+}
+
+button {
+  padding: 6px 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

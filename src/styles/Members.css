@@ -1,0 +1,83 @@
+/* Page layout */
+.members-page {
+  padding: 40px;
+}
+
+/* Page title */
+.members-page h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1f2937;
+}
+
+/* Action buttons section */
+.members-actions {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.members-actions button {
+  padding: 10px 20px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.members-actions button:hover {
+  background-color: #1d4ed8;
+}
+
+/* Add member form */
+.member-form,
+.members-page > div > input {
+  margin: 10px;
+}
+
+/* Inputs & select */
+.member-form input,
+.member-form select,
+.members-page input,
+.members-page select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+th,
+td {
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Delete button */
+table button {
+  padding: 6px 12px;
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+table button:hover {
+  background-color: #b91c1c;
+}
