@@ -70,16 +70,38 @@ function Hero() {
           ))}
         </div>
       </section>
-
+      
       {/* ABOUT SECTION */}
-      <section className="about-section">
-        <h2>About BookSphere</h2>
-        <p>
-          BookSphere is a modern library management system designed to simplify
-          book handling, member management and issue tracking using a smart
-          digital interface.
-        </p>
-      </section>
+      {/* ABOUT SECTION */}
+<section className="about-modern">
+  <div className="about-content">
+    <div className="about-text">
+      <h2>About BookSphere</h2>
+      <p>
+        BookSphere is a next-generation smart library platform crafted to bring
+        knowledge closer through elegant digital management. It transforms
+        traditional libraries into intelligent ecosystems of learning.
+      </p>
+
+      <p>
+        With advanced book organization, secure access control, and seamless
+        tracking, BookSphere ensures every book finds the right reader at the
+        right time.
+      </p>
+
+      <p>
+        Designed with aesthetics and usability in mind, BookSphere reflects the
+        warmth of classical libraries blended with modern technology.
+      </p>
+    </div>
+
+    <div className="about-images">
+      <img src="https://covers.openlibrary.org/b/id/9874155-L.jpg" />
+      <img src="https://covers.openlibrary.org/b/id/7222246-L.jpg" />
+      <img src="https://covers.openlibrary.org/b/id/5890771-L.jpg" />
+    </div>
+  </div>
+</section>
     </>
   );
 }

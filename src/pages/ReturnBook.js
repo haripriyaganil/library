@@ -1,75 +1,65 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import "../styles/ReturnBook.css";
 
 function ReturnBook() {
-  const [issuedBooks, setIssuedBooks] = useState([]);
+  const [book, setBook] = useState("");
+  const [issueDate, setIssueDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [fine, setFine] = useState(null);
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("issuedBooks")) || [];
-    setIssuedBooks(data);
-  }, []);
+  const calculateFine = () => {
+    if (!book || !issueDate || !returnDate) {
+      alert("Fill all fields");
+      return;
+    }
 
-  const returnBook = (index) => {
-    const updated = issuedBooks.filter((_, i) => i !== index);
-    setIssuedBooks(updated);
-    localStorage.setItem("issuedBooks", JSON.stringify(updated));
-    alert("Book Returned Successfully ✅");
+    const issue = new Date(issueDate);
+    const returned = new Date(returnDate);
+
+    const diffTime = returned - issue;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    let fineAmount = 0;
+
+    if (diffDays > 7) {
+      fineAmount = (diffDays - 7) * 5; // ₹5 per day fine
+    }
+
+    setFine(fineAmount);
   };
 
   return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
+    <div className="return-page">
       <h1>📕 Return Book</h1>
-      <p>Select a book to return</p>
 
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th>Book Name</th>
-            <th>Member ID</th>
-            <th>Issue Date</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+      <input
+        type="text"
+        placeholder="Book Name"
+        value={book}
+        onChange={(e) => setBook(e.target.value)}
+      />
 
-        <tbody>
-          {issuedBooks.length === 0 ? (
-            <tr>
-              <td colSpan="5">No issued books found</td>
-            </tr>
-          ) : (
-            issuedBooks.map((b, i) => (
-              <tr key={i}>
-                <td>{b.bookName}</td>
-                <td>{b.memberId}</td>
-                <td>{b.issueDate}</td>
-                <td style={{ color: "green" }}>{b.status}</td>
-                <td>
-                  <button onClick={() => returnBook(i)} style={btnStyle}>
-                    Return
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      <input
+        type="date"
+        value={issueDate}
+        onChange={(e) => setIssueDate(e.target.value)}
+      />
+
+      <input
+        type="date"
+        value={returnDate}
+        onChange={(e) => setReturnDate(e.target.value)}
+      />
+
+      <button onClick={calculateFine}>Calculate Fine</button>
+
+      {fine !== null && (
+        <h3>
+          {fine === 0 ? "✅ No Fine" : `💰 Fine Amount: ₹${fine}`}
+        </h3>
+      )}
     </div>
   );
 }
-
-const tableStyle = {
-  margin: "20px auto",
-  borderCollapse: "collapse",
-  width: "80%"
-};
-
-const btnStyle = {
-  padding: "6px 12px",
-  background: "crimson",
-  color: "white",
-  border: "none",
-  borderRadius: "5px",
-  cursor: "pointer"
-};
 
 export default ReturnBook;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";   // 🔥 ADDED
 import "../styles/Books.css";
 
 const booksData = [
@@ -25,7 +26,37 @@ const booksData = [
 ];
 
 function Books() {
+  const navigate = useNavigate();
   const [genre, setGenre] = useState("All");
+
+  const addLog = (action, book) => {
+    let logs = JSON.parse(localStorage.getItem("activityLogs")) || [];
+    logs.push({
+      action: action,
+      book: book.title,
+      time: new Date().toLocaleString()
+    });
+    localStorage.setItem("activityLogs", JSON.stringify(logs));
+  };
+
+  const handleRequest = (book) => {
+    let requests = JSON.parse(localStorage.getItem("bookRequests")) || [];
+    let reserved = JSON.parse(localStorage.getItem("reservedBooks")) || [];
+
+    if (requests.length >= 3) {
+      reserved.push(book);
+      localStorage.setItem("reservedBooks", JSON.stringify(reserved));
+      addLog("Reserved", book);
+      alert(`📌 Borrow limit reached. ${book.title} has been reserved.`);
+      return;
+    }
+
+    requests.push(book);
+    localStorage.setItem("bookRequests", JSON.stringify(requests));
+    addLog("Requested", book);
+
+    alert(`📥 ${book.title} requested successfully!`);
+  };
 
   const filteredBooks =
     genre === "All"
@@ -36,7 +67,6 @@ function Books() {
     <div className="library-page">
       <h1 className="library-title">📚 Library Collection</h1>
 
-      {/* FILTER */}
       <div style={{ textAlign:"center", marginBottom:"30px" }}>
         <select
           value={genre}
@@ -51,12 +81,12 @@ function Books() {
           }}
         >
           <option value="All">All Genres</option>
-          <option value="Literature">Literature</option>
-          <option value="Fiction">Fiction</option>
-          <option value="Fantasy">Fantasy</option>
-          <option value="Horror">Horror</option>
-          <option value="Classic">Classic</option>
-          <option value="Drama">Drama</option>
+          <option>Literature</option>
+          <option>Fiction</option>
+          <option>Fantasy</option>
+          <option>Horror</option>
+          <option>Classic</option>
+          <option>Drama</option>
         </select>
       </div>
 
@@ -67,12 +97,20 @@ function Books() {
             <h3>{b.title}</h3>
             <p>{b.author}</p>
             <p style={{fontSize:"12px", color:"#a86f3e"}}>{b.genre}</p>
-            <button>View</button>
+
+            <button onClick={()=>navigate("/my-books")}>
+              My Books
+            </button>
+
+            <button onClick={()=>handleRequest(b)}>
+              Request Book
+            </button>
           </div>
         ))}
       </div>
     </div>
   );
 }
+
 
 export default Books;

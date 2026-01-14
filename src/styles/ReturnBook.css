@@ -1,0 +1,35 @@
+.return-page {
+  background: linear-gradient(#f7e7d2, #e6c8a5);
+  min-height: 100vh;
+  padding: 60px;
+  text-align: center;
+}
+
+.return-page h1 {
+  color: #5a3b1e;
+  margin-bottom: 30px;
+}
+
+.return-page input {
+  display: block;
+  margin: 15px auto;
+  padding: 12px;
+  width: 260px;
+  border-radius: 8px;
+  border: 2px solid #8b5e34;
+}
+
+.return-page button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #8b5e34;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.return-page h3 {
+  margin-top: 20px;
+  color: #5a3b1e;
+}

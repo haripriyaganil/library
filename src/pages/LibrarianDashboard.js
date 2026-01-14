@@ -3,51 +3,42 @@ import { useNavigate } from "react-router-dom";
 function LibrarianDashboard() {
   const navigate = useNavigate();
 
+  const requests = JSON.parse(localStorage.getItem("bookRequests")) || [];
+
   return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
-      <h1>📚 Librarian Control Panel</h1>
-      <p>Manage library operations from one place</p>
+    <div className="dashboard-page">
+      <h1>📚 Librarian Dashboard</h1>
 
-      <div style={gridStyle}>
-        <button style={btnStyle} onClick={() => navigate("/book-management")}>
-          📘 Manage Books
-        </button>
+      <button
+        style={{
+          marginBottom: "20px",
+          padding: "10px 20px",
+          background: "#8b5e34",
+          color: "white",
+          border: "none",
+          borderRadius: "20px",
+          cursor: "pointer"
+        }}
+        onClick={() => navigate("/approve-requests")}
+      >
+        Approve Requests
+      </button>
 
-        <button style={btnStyle} onClick={() => navigate("/members")}>
-          👥 Manage Members
-        </button>
+      <h3>Book Requests</h3>
 
-        <button style={btnStyle} onClick={() => navigate("/issue-tracking")}>
-          ⏳ Issue Tracking
-        </button>
-
-        <button style={btnStyle} onClick={() => navigate("/return-book")}>
-          📕 Return Books
-        </button>
-
-        <button style={btnStyle} onClick={() => navigate("/smart-reports")}>
-          📊 Smart Reports
-        </button>
-      </div>
+      {requests.length === 0 ? (
+        <p>No requests yet</p>
+      ) : (
+        <ul>
+          {requests.map((b, i) => (
+            <li key={i}>
+              {b.title} — {b.author} ({b.genre})
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
-
-const gridStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-  gap: "20px",
-  marginTop: "40px"
-};
-
-const btnStyle = {
-  padding: "20px",
-  background: "#2563eb",
-  color: "white",
-  border: "none",
-  borderRadius: "12px",
-  fontSize: "16px",
-  cursor: "pointer"
-};
 
 export default LibrarianDashboard;

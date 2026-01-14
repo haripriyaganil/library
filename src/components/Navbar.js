@@ -6,6 +6,7 @@ import logo from "../assets/trans.png"; // ✅ ADD
 function Navbar() {
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
+<li><Link to="/my-books">My Books</Link></li>
 
   const logout = () => {
     localStorage.clear();
@@ -52,5 +53,6 @@ function Navbar() {
     </nav>
   );
 }
+<li><Link to="/return-book">Return Book</Link></li>
 
 export default Navbar;

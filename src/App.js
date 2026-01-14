@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
@@ -11,7 +12,7 @@ import Members from "./pages/Members";
 import SplashScreen from "./components/SplashScreen";
 import BookManagement from "./pages/BookManagement";
 import IssueTracking from "./pages/IssueTracking";
-import IssueBooking from "./pages/IssueBooking"; // ✅ MISSING IMPORT FIXED
+import IssueBooking from "./pages/IssueBooking";
 import QuickSearch from "./pages/QuickSearch";
 import AvailabilityStatus from "./pages/AvailabilityStatus";
 import SecureLoginInfo from "./pages/SecureLoginInfo";
@@ -21,6 +22,10 @@ import ReturnBook from "./pages/ReturnBook";
 import LibrarianDashboard from "./pages/LibrarianDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import LibrarianDomain from "./pages/LibrarianDomain";
+import AdminLibrarians from "./pages/AdminLibrarians";
+import ApproveRequests from "./pages/ApproveRequests";
+
+<Route path="/admin-librarians" element={<AdminLibrarians />} />
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -54,21 +59,26 @@ function App() {
           }
         />
 
-        {/* PAGES */}
+        {/* COMMON PAGES */}
+       
         <Route path="/books" element={<Books />} />
         <Route path="/members" element={<Members />} />
         <Route path="/issue-tracking" element={<IssueTracking />} />
         <Route path="/issue-booking" element={<IssueBooking />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-<Route path="/quick-search" element={<QuickSearch />} />
-<Route path="/availability-status" element={<AvailabilityStatus />} />
-<Route path="/secure-login" element={<SecureLoginInfo />} />
-<Route path="/smart-reports" element={<SmartReports />} />
-<Route path="/my-books" element={<MyBooks />} />
-<Route path="/return-book" element={<ReturnBook />} />
-<Route path="/admin-dashboard" element={<AdminDashboard />} />
-<Route path="/librarian-domain" element={<LibrarianDomain />} />
+        <Route path="/quick-search" element={<QuickSearch />} />
+        <Route path="/availability-status" element={<AvailabilityStatus />} />
+        <Route path="/secure-login" element={<SecureLoginInfo />} />
+        <Route path="/smart-reports" element={<SmartReports />} />
+        <Route path="/my-books" element={<MyBooks />} />
+        <Route path="/return-book" element={<ReturnBook />} />
+        {/* DASHBOARDS */}
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/librarian-dashboard" element={<LibrarianDashboard />} />
+        <Route path="/librarian-domain" element={<LibrarianDomain />} />
+        <Route path="/approve-requests" element={<ApproveRequests />} />
+
 
         {/* ROLE PROTECTED */}
         <Route
@@ -82,7 +92,6 @@ function App() {
           }
         />
       </Routes>
-      
     </>
   );
 }
