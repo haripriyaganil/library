@@ -88,6 +88,9 @@ function Books() {
           <option>Classic</option>
           <option>Drama</option>
         </select>
+        <button onClick={()=>navigate("/my-books")}>
+              My Books
+            </button>
       </div>
 
       <div className="library-grid">
@@ -98,9 +101,7 @@ function Books() {
             <p>{b.author}</p>
             <p style={{fontSize:"12px", color:"#a86f3e"}}>{b.genre}</p>
 
-            <button onClick={()=>navigate("/my-books")}>
-              My Books
-            </button>
+            
 
             <button onClick={()=>handleRequest(b)}>
               Request Book
