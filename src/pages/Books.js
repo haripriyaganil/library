@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";   // 🔥 ADDED
+import { useNavigate } from "react-router-dom";
 import "../styles/Books.css";
 
 const booksData = [
@@ -28,6 +28,8 @@ const booksData = [
 function Books() {
   const navigate = useNavigate();
   const [genre, setGenre] = useState("All");
+  const [search, setSearch] = useState("");
+  const role = localStorage.getItem("role");
 
   const addLog = (action, book) => {
     let logs = JSON.parse(localStorage.getItem("activityLogs")) || [];
@@ -58,16 +60,36 @@ function Books() {
     alert(`📥 ${book.title} requested successfully!`);
   };
 
-  const filteredBooks =
-    genre === "All"
-      ? booksData
-      : booksData.filter(book => book.genre === genre);
+  const filteredBooks = booksData.filter(book => {
+    const matchesGenre = genre === "All" || book.genre === genre;
+    const matchesSearch =
+      book.title.toLowerCase().includes(search.toLowerCase()) ||
+      book.author.toLowerCase().includes(search.toLowerCase());
+
+    return matchesGenre && matchesSearch;
+  });
 
   return (
     <div className="library-page">
       <h1 className="library-title">📚 Library Collection</h1>
 
       <div style={{ textAlign:"center", marginBottom:"30px" }}>
+        <input
+          type="text"
+          placeholder="Search by title or author..."
+          value={search}
+          onChange={(e)=>setSearch(e.target.value)}
+          style={{
+            padding:"10px 18px",
+            borderRadius:"8px",
+            border:"2px solid #8b5e34",
+            background:"#fffaf2",
+            color:"#5a3b1e",
+            fontWeight:"600",
+            marginRight:"10px"
+          }}
+        />
+
         <select
           value={genre}
           onChange={(e)=>setGenre(e.target.value)}
@@ -77,7 +99,8 @@ function Books() {
             border:"2px solid #8b5e34",
             background:"#fffaf2",
             color:"#5a3b1e",
-            fontWeight:"600"
+            fontWeight:"600",
+            marginRight:"5px"
           }}
         >
           <option value="All">All Genres</option>
@@ -88,9 +111,12 @@ function Books() {
           <option>Classic</option>
           <option>Drama</option>
         </select>
-        <button onClick={()=>navigate("/my-books")}>
-              My Books
-            </button>
+
+        {role === "User" && (
+          <button onClick={()=>navigate("/my-books")}>
+            My Books
+          </button>
+        )}
       </div>
 
       <div className="library-grid">
@@ -101,8 +127,6 @@ function Books() {
             <p>{b.author}</p>
             <p style={{fontSize:"12px", color:"#a86f3e"}}>{b.genre}</p>
 
-            
-
             <button onClick={()=>handleRequest(b)}>
               Request Book
             </button>
@@ -112,6 +136,5 @@ function Books() {
     </div>
   );
 }
-
 
 export default Books;
